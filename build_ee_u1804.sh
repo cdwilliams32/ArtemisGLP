@@ -104,6 +104,8 @@ then
     echo "Cloning EmptyEpsilon repo to ${EE_BUILD_EE}..."
     git clone https://github.com/daid/EmptyEpsilon.git "${EE_BUILD_EE}" &&
     echo "!   EmptyEpsilon source cloned."
+    cp -r scripts/ EmptyEpsilon/
+    echo "scripts copied"
   else
     echo "Fetching and fast-forwarding EmptyEpsilon repo at ${EE_BUILD_EE}..."
     ( cd "${EE_BUILD_EE}" &&
