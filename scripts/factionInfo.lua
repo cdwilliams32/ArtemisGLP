@@ -97,3 +97,28 @@ CUF:setDescription(_([[The Celestial Unified Fleet, or CUF, is the farthest-rang
 The CUF is friendly with the human navy, and neutral toward the TSN and USN. They are less structured than the other primarily human navies.
 
 The CUF have neutral relations with the Ktlitans and Arlenians. They are enemies with Exuari, Kraylor, and Ghosts for political and historical reasons, not xenophobia; some of their best friends are also Exuari, Kraylor, and Ghosts.]]))
+
+Alpha = FactionInfo():setName("Alpha"):setLocaleName(_("Alpha"))
+Bravo = FactionInfo():setName("Bravo"):setLocaleName(_("Bravo"))
+Charlie = FactionInfo():setName("Charlie"):setLocaleName(_("Charlie"))
+Delta = FactionInfo():setName("Delta"):setLocaleName(_("Delta"))
+
+Alpha:setGMColor(128, 255, 255)
+Alpha:setEnemy(Bravo)
+Alpha:setEnemy(Charlie)
+Alpha:setEnemy(Delta)
+
+Bravo:setGMColor(255, 128, 255)
+Bravo:setEnemy(Alpha)
+Bravo:setEnemy(Charlie)
+Bravo:setEnemy(Delta)
+
+Charlie:setGMColor(255, 255, 128)
+Charlie:setEnemy(Alpha)
+Charlie:setEnemy(Bravo)
+Charlie:setEnemy(Delta)
+
+Delta:setGMColor(128, 255, 0)
+Delta:setEnemy(Alpha)
+Delta:setEnemy(Bravo)
+Delta:setEnemy(Charlie)
