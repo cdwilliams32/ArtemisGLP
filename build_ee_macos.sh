@@ -48,9 +48,9 @@ do
 done
 echo "-   Using ${EE_THREADS} threads to build (make -j${EE_THREADS}).";
 
-EE_BUILD_DATE_YEAR="${EE_BUILD_DATE:0:4}"
-EE_BUILD_DATE_MONTH="${EE_BUILD_DATE:4:2}"
-EE_BUILD_DATE_DAY="${EE_BUILD_DATE:6:2}"
+EE_BUILD_DATE_YEAR="2020"
+EE_BUILD_DATE_MONTH="11"
+EE_BUILD_DATE_DAY="23"
 
 if [ "${EE_UPDATE}" == "yes" ]
 then
