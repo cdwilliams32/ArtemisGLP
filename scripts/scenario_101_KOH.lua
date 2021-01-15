@@ -28,43 +28,70 @@ function update(delta)
     --check boundry
     checkBond()
 
-    checkVictory()
-
     --checks points
-    if (time == 3600 or time == 7200 or time == 100)
+    if (time == 3600 or time == 7200) --checks every 1 minute
     then
         checkPoints()
         annoucePoints()
+        checkVictory()
     end
 
     --respawn ships
-    if (time == 200) -- will be set to 7200 to respawn ships every two minutes
+    if (time == 7200) -- will be set to 7200 to respawn ships every two minutes
     then
         respawn()
     end
 
     --reset clock
-    if (time == 201) -- will be set to 7201 for reset every two minutes
+    if (time == 7201) -- will be set to 7201 for reset every two minutes
     then
         time = 1
     end
     time = time + 1
 end
 
+--announces the point count every minute
 function annoucePoints()
     local announce = "Alpha: " .. teamPoints[1] .. " Bravo: " .. teamPoints[2] .. " Charlie: " .. teamPoints[3] .. " Delta: " .. teamPoints[4]
     print(announce)
     globalMessage(announce)
-
 end
 
+--checks victory for all the teams and will print and send a message to the winning team or teams. Victory screen will just say 'independent wins'
 function checkVictory()
-    local victory = ""
-    if teamPoints[1] == 20
+    local victoryS = ""
+    local victoryI = 0
+    if teamPoints[1] >= 20
     then
+        victoryS = victoryS .. "Alpha "
+        victoryI = 1
+    end
+    if teamPoints[2] >= 20
+    then
+        victoryS = victoryS .. "Bravo "
+        victoryI = 1
+    end
+    if teamPoints[3] >= 20
+    then
+        victoryS = victoryS .. "Charlie "
+        victoryI = 1
+    end
+    if teamPoints[4] >= 20
+    then
+        victoryS = victoryS .. "Delta "
+        victoryI = 1
+    end
+    if victoryI == 1
+    then
+        print(victoryS .. "Wins!!!")
+        globalMessage(victoryS .. "Wins!!!")
+        victory("Independent")
+    else
+        print("No winners yet.")
     end
 end
 
+--checks zones and awards ships
 function checkPoints()
     for i=1,8,1
     do
@@ -109,6 +136,7 @@ function checkPoints()
     end
 end
 
+--checks the boundry and destroyes them if out of the play area
 function checkBond()
     for i=1,8,1
     do
@@ -119,6 +147,7 @@ function checkBond()
     end
 end
 
+--respawns ships if their station still around
 function respawn()
     print("Respawning Ships!")
     if spaceStations[1]:isValid()
@@ -168,6 +197,7 @@ function respawn()
 
 end
 
+--respawns ships when called from the respawn function.
 function respawnShips(index)
     if (index==1)
     then
@@ -211,7 +241,7 @@ function respawnShips(index)
     end
 end
 
---spawns the spacestations and artifacts
+--spawns the artifacts
 function spawnArtifacts()
     --create the artifacts to visualize the bounderies
 
@@ -279,7 +309,7 @@ function spawnZones()
     bondZone = Zone():setColor(0,0,0):setPoints(0,8750,-3558.95,7993.52,-6187.18,6187.18,-7993.52,3558.95,-8750,0,-7993.52,-3558.95,-6187.18,-6187.18,-3558.95,-7993.52,0,-8750,3558.95,-7993.52,6187.18,-6187.18,7993.52,-3558.95,8750,0,7993.52,3558.95,6187.18,6187.18,3558.95,7993.52)
 end
 
---spawn player ships
+--spawn player ships and inserts them into the playerShips table
 function spawnShips()
     Alpha1 = PlayerSpaceship():setFaction("Alpha"):setCallSign("Alpha1"):setTemplate("Atlantis"):setPosition(-2491.26,-5595.47):setRotation(66)
     table.insert(playerShips, Alpha1)
