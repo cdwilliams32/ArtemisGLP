@@ -6,18 +6,56 @@
 
 --run at start
 function init()
+
+    gameState = 0
+
     spawnWorld()
+
+    player = PlayerSpaceship():setTemplate("Atlantis"):setPosition(24843, 9638):setFaction("USN")
+    firstCPU = CpuShip():setFaction("Exuari"):setTemplate("Adder MK3"):setCallSign("BR3"):setPosition(-7703, 788):orderIdle():setWeaponStorage("HVLI", 1)
+    firstTriggerZone = Zone():setPoints(9515,-2180,8231,-3062,5343,2754,6787,3235)
+
+    ambush1 = CpuShip():setFaction("Exuari"):setTemplate("Dreadnought"):setCallSign("VK7"):setPosition(940, -16751):orderIdle()
+    ambush2 = CpuShip():setFaction("Exuari"):setTemplate("Dreadnought"):setCallSign("S6"):setPosition(-1107, -17714):orderIdle()
+    ambush3 = CpuShip():setFaction("Exuari"):setTemplate("Dreadnought"):setCallSign("CCN5"):setPosition(-4960, -17594):orderIdle()
+    ambush4 = CpuShip():setFaction("Exuari"):setTemplate("Dreadnought"):setCallSign("CV4"):setPosition(-9235, -17835):orderIdle()
+
+    poseidon1 = CpuShip():setFaction("USN"):setTemplate("Starhammer II"):setCallSign("PoseidonSpear1"):setPosition(-3956, 15426):orderIdle():setWeaponStorage("Homing", 3):setWeaponStorage("EMP", 1)
+    poseidon2 = CpuShip():setFaction("USN"):setTemplate("Starhammer II"):setCallSign("PoseidonSpear2"):setPosition(-3248, 16921):orderIdle():setWeaponStorage("Homing", 3):setWeaponStorage("EMP", 1)
+    poseidon3 = CpuShip():setFaction("USN"):setTemplate("Starhammer II"):setCallSign("PoseidonSpear3"):setPosition(-1114, 17226):orderIdle():setWeaponStorage("Homing", 3):setWeaponStorage("EMP", 1)
+
+
+
+
 end
 
 function update(delta)
+    if firstTriggerZone:isInside(player)
+    then
+        firstCPU:orderAttack(player)
+        gameState = 1
+    end
+    if (gameState == 1 && not firstCPU.isValid())
+    then
+        ambush1:orderAttack(player)
+        ambush2:orderAttack(player)
+        ambush3:orderAttack(player)
+        ambush4:orderAttack(player)
+        gameState = 2
+    end
 end
 
 function spawnWorld()
     Nebula():setPosition(-48313, 39166)
+    Nebula():setPosition(27072, -6279)
+    Nebula():setPosition(31658, 17497)
+    Nebula():setPosition(35943, 4570)
     Nebula():setPosition(36602, 31095)
+    Nebula():setPosition(-20652, -12624)
     Nebula():setPosition(32784, 44490)
     Nebula():setPosition(34622, -24229)
     Nebula():setPosition(15971, -19962)
+    Nebula():setPosition(8424, -13978)
     Nebula():setPosition(5295, -48993)
     Nebula():setPosition(13254, 14222)
     Nebula():setPosition(-20503, -45035)
