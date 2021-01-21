@@ -1,8 +1,10 @@
 -- Name: Quiz
 -- Description: Help understand how Empty Epsilon works.
+-- Type: Basic
 
 --- Scenario
 -- @script scenario_102_quiz
+require("utils.lua")
 
 --run at start
 function init()
@@ -13,76 +15,91 @@ function init()
 
     spawnWorld()
 
-    player = PlayerSpaceship():setTemplate("Atlantis"):setPosition(24843, 9638):setFaction("USN")
-    firstCPU =     CpuShip():setFaction("Exuari"):setTemplate("Adder MK3"):setCallSign("BR3"):setPosition(-16603, 778):setWeaponStorage("HVLI", 0):orderIdle()
-    firstTriggerZone = Zone():setPoints(9515,-2180,8231,-3062,5343,2754,6787,3235)
+    player = PlayerSpaceship():setTemplate("Atlantis"):setPosition(17571, 3998):setFaction("USN")
+    firstCPU = CpuShip():setFaction("Exuari"):setTemplate("Adder MK3"):setCallSign("BR3"):setPosition(-1699, -3808):setWeaponStorage("HVLI", 0)
 
-    ambush1 = CpuShip():setFaction("Exuari"):setTemplate("Dreadnought"):setCallSign("VK7"):setPosition(940, -16751):orderIdle()
-    ambush2 = CpuShip():setFaction("Exuari"):setTemplate("Dreadnought"):setCallSign("S6"):setPosition(-1107, -17714):orderIdle()
-    ambush3 = CpuShip():setFaction("Exuari"):setTemplate("Dreadnought"):setCallSign("CCN5"):setPosition(-4960, -17594):orderIdle()
+    ambush1 = CpuShip():setFaction("Exuari"):setTemplate("Dreadnought"):setCallSign("CCN5"):setPosition(-1723, -2476):orderIdle()
+    ambush2 = CpuShip():setFaction("Exuari"):setTemplate("Dreadnought"):setCallSign("VK7"):setPosition(4900, 4650):orderIdle()
+    ambush3 = CpuShip():setFaction("Exuari"):setTemplate("Dreadnought"):setCallSign("S6"):setPosition(9175, -5262):orderIdle()
 
-    poseidon1 = CpuShip():setFaction("USN"):setTemplate("Starhammer II"):setCallSign("PoseidonSpear1"):setPosition(-3956, 15426):orderIdle():setWeaponStorage("Homing", 3):setWeaponStorage("EMP", 1)
-    poseidon2 = CpuShip():setFaction("USN"):setTemplate("Starhammer II"):setCallSign("PoseidonSpear2"):setPosition(-3248, 16921):orderIdle():setWeaponStorage("Homing", 3):setWeaponStorage("EMP", 1)
-    poseidon3 = CpuShip():setFaction("USN"):setTemplate("Starhammer II"):setCallSign("PoseidonSpear3"):setPosition(-1114, 17226):orderIdle():setWeaponStorage("Homing", 3):setWeaponStorage("EMP", 1)
+    poseidon1 = CpuShip():setFaction("USN"):setTemplate("Starhammer II"):setCallSign("PoseidonSpear1"):setPosition(-38788, 26876):orderIdle():setWeaponStorage("Homing", 3):setWeaponStorage("EMP", 1)
+    poseidon2 = CpuShip():setFaction("USN"):setTemplate("Starhammer II"):setCallSign("PoseidonSpear2"):setPosition(-38052, 33403):orderIdle():setWeaponStorage("Homing", 3):setWeaponStorage("EMP", 1)
+    poseidon3 = CpuShip():setFaction("USN"):setTemplate("Starhammer II"):setCallSign("PoseidonSpear3"):setPosition(-31320, 28747):orderIdle():setWeaponStorage("Homing", 3):setWeaponStorage("EMP", 1)
 
-    DS449 = SpaceStation():setTemplate("Large Station"):setFaction("USN"):setCallSign("DS449"):setPosition(9408, 41938)
-    2B9 = SpaceStation():setTemplate("Huge Station"):setFaction("USN"):setCallSign("2B9"):setPosition(-36111, 29775)
-    DS450 = SpaceStation():setTemplate("Large Station"):setFaction("USN"):setCallSign("DS450"):setPosition(-61796, 2873)
+    DS449 = SpaceStation():setTemplate("Large Station"):setFaction("USN"):setCallSign("DS449"):setPosition(-10124, 30058)
+    B9 = SpaceStation():setTemplate("Huge Station"):setFaction("USN"):setCallSign("B9"):setPosition(-36111, 29775)
+    DS450 = SpaceStation():setTemplate("Large Station"):setFaction("USN"):setCallSign("DS450"):setPosition(-39042, 16666)
 
 
-    patrol1 = CpuShip():setFaction("USN"):setTemplate("Adder MK4"):setCallSign("CV11"):setPosition(5243, 40755):orderFlyTowards(DS449:getPosition()):setWeaponStorage("HVLI", 1)
-    patrol2 = CpuShip():setFaction("USN"):setTemplate("Adder MK4"):setCallSign("NC12"):setPosition(1928, 43543):orderFlyTowards(DS449:getPosition()):setWeaponStorage("HVLI", 1)
-    patrol3 = CpuShip():setFaction("USN"):setTemplate("Adder MK4"):setCallSign("CV10"):setPosition(722, 41132):orderFlyTowards(DS449:getPosition()):setWeaponStorage("HVLI", 1)
+    patrol1 = CpuShip():setFaction("USN"):setTemplate("Adder MK4"):setCallSign("CV11"):setPosition(-12854, 26930):orderFlyTowards(DS449:getPosition()):setWeaponStorage("HVLI", 1)
+    patrol2 = CpuShip():setFaction("USN"):setTemplate("Adder MK4"):setCallSign("NC12"):setPosition(-13440, 28020):orderFlyTowards(DS449:getPosition()):setWeaponStorage("HVLI", 1)
+    patrol3 = CpuShip():setFaction("USN"):setTemplate("Adder MK4"):setCallSign("CV10"):setPosition(-14463, 27548):orderFlyTowards(DS449:getPosition()):setWeaponStorage("HVLI", 1)
 
-    EDP1 = CpuShip():setFaction("Exuari"):setTemplate("Defense platform"):setCallSign("CCN14"):setPosition(-28008, -24655):orderStandGround()
-    EDP2 = CpuShip():setFaction("Exuari"):setTemplate("Defense platform"):setCallSign("CV15"):setPosition(-28469, -32251):orderStandGround()
-    EDP3 = CpuShip():setFaction("Exuari"):setTemplate("Defense platform"):setCallSign("SS13"):setPosition(-35130, -27988):orderStandGround()
-    ES = SpaceStation():setTemplate("Medium Station"):setFaction("Exuari"):setCallSign("DS458"):setPosition(-30707, -28673)
+    ES = SpaceStation():setTemplate("Medium Station"):setFaction("Exuari"):setCallSign("DS458"):setPosition(-39840, -10264)
+    EDP1 = CpuShip():setFaction("Exuari"):setTemplate("Defense platform"):setCallSign("CCN14"):setPosition(-44263, -9579):orderDefendLocation(ES:getPosition())
+    EDP2 = CpuShip():setFaction("Exuari"):setTemplate("Defense platform"):setCallSign("CV15"):setPosition(-37602, -13842):orderDefendLocation(ES:getPosition())
+    EDP3 = CpuShip():setFaction("Exuari"):setTemplate("Defense platform"):setCallSign("SS13"):setPosition(-37141, -6246):orderDefendLocation(ES:getPosition())
+    
+
+  
+
 
 
 end
 
 function update(delta)
     patrolUpdate()
-    if firstTriggerZone:isInside(player)
+    if gameState == 0
     then
-        firstCPU:orderAttack(player)
-        gameState = 1
+        if distance(firstCPU,player) < 15000
+        then
+            firstCPU:orderAttack(player)
+            gameState = 1
+        end
     end
-    if (gameState == 1 and not firstCPU.isValid())
+    if (gameState == 1 and not firstCPU:isValid())
     then
+        local x,y = player:getPosition()
+        x = x - 2500
+        y = y + 1500
+        ambush1:setPosition(x,y)
+        x = x + 2500
+        y = y - 4500
+        ambush2:setPosition(x,y)
+        x = x + 2500
+        y = y + 4500
+        ambush3:setPosition(x,y)
         ambush1:orderAttack(player)
         ambush2:orderAttack(player)
         ambush3:orderAttack(player)
-        ambush4:orderAttack(player)
         gameState = 2
     end
     if (gameState == 2)
     then
-        if (timer < 240)
+        if (timer < 2400)
         then
             timer = timer + 1
         end
-        if (timer = 120)
+        if (timer == 1200)
         then
             player:commandSendCommPlayer("Poseidon's Spear, dropping out of wrap.")
         end
-        if (timer == 180)
+        if (timer == 1600)
         then
             local x,y = player:getPosition()
-            x = x - 2500
-            y = y + 1500
+            x = x - 3500
+            y = y + 2500
             poseidon1:setPosition(x,y)
-            x = x + 2500
-            y = y - 3000
+            x = x + 3500
+            y = y - 5500
             poseidon2:setPosition(x,y)
-            x = x + 2500
-            y = y + 3000
+            x = x + 3500
+            y = y + 5500
             poseidon3:setPosition(x,y)
         end
-        if (timer == 240)
+        if (timer == 2000)
         then
-            player:commandSendCommPlayer("Excuse the close wrap. We got these guys, report and dock to Station 2B9 in quadrant G3")
+            player:commandSendCommPlayer("Excuse the close wrap. We got these guys, report and dock to Station B9 in quadrant G3")
             poseidon1:orderAttack(ambush1)
             poseidon2:orderAttack(ambush2)
             poseidon3:orderAttack(ambush3)
@@ -96,11 +113,11 @@ function update(delta)
             timer = 0
         end
     end
-    if (gameState == 3 and player:isDocked(2B9))
+    if (gameState == 3 and player:isDocked(B9))
     then
         if (timer == 0)
         then
-            player:commandSendCommPlayer("Welcome to Station 2B9. Please stand by for next assignment.")
+            player:commandSendCommPlayer("Welcome to Station B9. Please stand by for next assignment.")
         end
         if (timer < 1800)
         then
@@ -115,41 +132,41 @@ function update(delta)
             gameState = 4
         end
     end
-    if not ambush1.isValid() and not ambush2.isValid() and not ambush3.isValid() and gameState < 4
+    if not ambush1:isValid() and not ambush2:isValid() and not ambush3:isValid() and gameState < 4
     then
         poseidon3:orderIdle()
         poseidon2:orderIdle()
         poseidon1:orderIdle()
     end
-    if not ES.isValid()
+    if not ES:isValid()
     then
         victory("USN")
     end
-    if not player.isValid()
+    if not player:isValid()
     then
         victory("Exuari")
     end
     if supportComing == 1
     then
-        if EDP1.isValid()
+        if EDP1:isValid()
         then
             poseidon3:orderAttack(EDP1)
             poseidon2:orderAttack(EDP1)
             poseidon1:orderAttack(EDP1)
         end
-        if EDP2.isValid() and not EDP1.isValid()
+        if EDP2:isValid() and not EDP1:isValid()
         then
             poseidon3:orderAttack(EDP2)
             poseidon2:orderAttack(EDP2)
             poseidon1:orderAttack(EDP2)
         end
-        if EDP3.isValid() and not EDP1.isValid() and not EDP2.isValid()
+        if EDP3:isValid() and not EDP1:isValid() and not EDP2:isValid()
         then
             poseidon3:orderAttack(EDP3)
             poseidon2:orderAttack(EDP3)
             poseidon1:orderAttack(EDP3)
         end
-        if ES:isValid() and not EDP3.isValid() and not EDP1.isValid() and not EDP2.isValid()
+        if ES:isValid() and not EDP3:isValid() and not EDP1:isValid() and not EDP2:isValid()
         then
             poseidon3:orderAttack(ES)
             poseidon2:orderAttack(ES)
@@ -159,24 +176,32 @@ function update(delta)
 end
 
 function patrolUpdate()
-    if (distance(patrol1,DS449) < 150 or distance(patrol2,DS449) < 150 or distance(patrol3,DS449) < 150)
+    if (distance(patrol1,DS449) < 1500 or distance(patrol2,DS449) < 1500 or distance(patrol3,DS449) < 1500)
     then
-        patrol1:orderFlyTowards(DS450)
-        patrol2:orderFlyTowards(DS450)
-        patrol3:orderFlyTowards(DS450)
+        patrol1:orderFlyTowards(DS450:getPosition())
+        patrol2:orderFlyTowards(DS450:getPosition())
+        patrol3:orderFlyTowards(DS450:getPosition())
     end
-    if (distance(patrol1,DS450) < 150 or distance(patrol2,DS450) < 150 or distance(patrol3,DS450) < 150)
+    if (distance(patrol1,DS450) < 1500 or distance(patrol2,DS450) < 1500 or distance(patrol3,DS450) < 1500)
     then
-        patrol1:orderFlyTowards(DS449)
-        patrol2:orderFlyTowards(DS449)
-        patrol3:orderFlyTowards(DS449)
+        patrol1:orderFlyTowards(DS449:getPosition())
+        patrol2:orderFlyTowards(DS449:getPosition())
+        patrol3:orderFlyTowards(DS449:getPosition())
     end
 end
 
 function spawnWorld()
     Nebula():setPosition(-48313, 39166)
+    Nebula():setPosition(22233, 12896)
+    Nebula():setPosition(28285, 7257)
+    Nebula():setPosition(26518, -31)
     Nebula():setPosition(27072, -6279)
     Nebula():setPosition(31658, 17497)
+    Nebula():setPosition(-5748, -17210)
+    Nebula():setPosition(-5756, -3031)
+    Nebula():setPosition(-40823, 1760)
+    Nebula():setPosition(-13490, -8684)
+    Nebula():setPosition(-13473, 1405)
     Nebula():setPosition(35943, 4570)
     Nebula():setPosition(36602, 31095)
     Nebula():setPosition(-20652, -12624)
