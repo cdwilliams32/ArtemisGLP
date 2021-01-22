@@ -53,12 +53,14 @@ function update(delta)
     then
         if distance(firstCPU,player) < 15000
         then
+            print("Attack!")
             firstCPU:orderAttack(player)
             gameState = 1
         end
     end
     if (gameState == 1 and not firstCPU:isValid())
     then
+        print("Ambush!")
         local x,y = player:getPosition()
         x = x - 2500
         y = y + 1500
@@ -82,7 +84,8 @@ function update(delta)
         end
         if (timer == 1200)
         then
-            player:commandSendCommPlayer("Poseidon's Spear, dropping out of wrap.")
+            print("Poseidon's Spear, dropping out of wrap.")
+            poseidon1:sendCommsMessage(player,"Poseidon's Spear, dropping out of wrap.")
         end
         if (timer == 1600)
         then
@@ -99,7 +102,8 @@ function update(delta)
         end
         if (timer == 2000)
         then
-            player:commandSendCommPlayer("Excuse the close wrap. We got these guys, report and dock to Station B9 in quadrant G3")
+            print("Excuse the close wrap. We got these guys, report and dock to Station B9 in quadrant G3")
+            poseidon1:sendCommsMessage(player,"Excuse the close wrap. We got these guys, report and dock to Station B9 in quadrant G3")
             poseidon1:orderAttack(ambush1)
             poseidon2:orderAttack(ambush2)
             poseidon3:orderAttack(ambush3)
@@ -117,7 +121,8 @@ function update(delta)
     then
         if (timer == 0)
         then
-            player:commandSendCommPlayer("Welcome to Station B9. Please stand by for next assignment.")
+            print("Welcome to Station B9. Please stand by for next assignment.")
+            B9:sendCommsMessage(player,"Welcome to Station B9. Please stand by for next assignment.")
         end
         if (timer < 1800)
         then
@@ -125,9 +130,12 @@ function update(delta)
         end
         if (timer == 1800)
         then
-            player:commandSendCommPlayer("--New Orders--")
-            player:commandSendCommPlayer("Engage and destroy the Exuari Station in quadrant D3")
-            player:commandSendCommPlayer("If needed, suppot may be requested from Posedion's Spear")
+            print("--New Orders--")
+            B9:sendCommsMessage(player,"--New Orders--")
+            print("Engage and destroy the Exuari Station in quadrant D3")
+            B9:sendCommsMessage(player,"Engage and destroy the Exuari Station in quadrant D3")
+            B9:sendCommsMessage(player,"If needed, suppot may be requested from Posedion's Spear")
+            print("If needed, suppot may be requested from Posedion's Spear")
             timer = 0
             gameState = 4
         end
@@ -148,6 +156,16 @@ function update(delta)
     end
     if supportComing == 1
     then
+        local x,y = player:getPosition()
+            x = x - 3500
+            y = y + 2500
+            poseidon1:setPosition(x,y)
+            x = x + 3500
+            y = y - 5500
+            poseidon2:setPosition(x,y)
+            x = x + 3500
+            y = y + 5500
+            poseidon3:setPosition(x,y)
         if EDP1:isValid()
         then
             poseidon3:orderAttack(EDP1)
