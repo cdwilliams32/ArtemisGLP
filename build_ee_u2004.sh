@@ -16,7 +16,7 @@ set -e
 # Update system and install tools.
 if [ ! -d "${EE_BUILD_MINGW_LIBPATH}" ]; then
   echo "Installing tools..."
-  sudo apt update && sudo apt -y install wget mlocate cmake build-essential git python3-minimal unzip zip mingw-w64 p7zip-full ninja-build libsfml-dev openjdk-8-jdk
+  sudo apt update && sudo apt -y install wget mlocate cmake make build-essential git python3-minimal unzip zip mingw-w64 p7zip-full ninja-build libsfml-dev openjdk-8-jdk
   echo
 fi
 
