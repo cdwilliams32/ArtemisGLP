@@ -15,7 +15,7 @@ EE_BUILD_DATE="$(date +'%Y%m%d')"
 EE_BUILD_CMAKE="${EE_BUILD_EE}/cmake"
 EE_BUILD_MAKE="/usr/bin/make"
 EE_UPDATE="yes"
-EE_THREADS="3"
+EE_THREADS=`nproc`
 
 set -e
 
