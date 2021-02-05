@@ -99,6 +99,8 @@ then
     ( cd "${EE_BUILD_EE}"
       git fetch --all && git merge --ff-only &&
         echo "!   EmptyEpsilon source updated." )
+    cp -r scripts/ EmptyEpsilon/
+    echo "scripts copied"
   fi
 fi
 
