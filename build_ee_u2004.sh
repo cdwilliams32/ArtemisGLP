@@ -62,19 +62,6 @@ do (
 echo
 
 
-## Build EE for win32
-echo "Building EE for win32"
-cd "${EE_BUILD_EE_PATH}"
-if [ ! -d _build_win32 ]; then
-  mkdir _build_win32
-fi
-cd _build_win32
-### Use the CMake toolchain from EE to make it easier to compile for Windows.
-rm -rf script_reference.html
-cmake .. -G Ninja -DCMAKE_MAKE_PROGRAM=ninja -DCMAKE_TOOLCHAIN_FILE=../cmake/mingw.toolchain -DSERIOUS_PROTON_DIR=../../SeriousProton
-ninja package
-
-
 ## Build EE for debian
 echo "Building EE for debian"
 cd "${EE_BUILD_EE_PATH}"
@@ -84,7 +71,7 @@ fi
 cd _build_native
 ### Use the CMake toolchain from EE to make it easier to compile for Windows.
 rm -rf script_reference.html
-cmake .. -G Ninja -DSERIOUS_PROTON_DIR=$PWD/../../SeriousProton/
+cmake .. -G Ninja -DSERIOUS_PROTON_DIR=$PWD/../../SeriousProton/ -DCPACK_PACKAGE_VERSION_MAJOR="2020" -DCPACK_PACKAGE_VERSION_MINOR="11" -DCPACK_PACKAGE_VERSION_PATCH="23"
 ninja
 ninja package
 
@@ -97,7 +84,7 @@ if [ ! -d _build_android ]; then
   mkdir _build_android
 fi
 cd _build_android
-cmake .. -DCMAKE_TOOLCHAIN_FILE=../cmake/android.toolchain -DSERIOUS_PROTON_DIR=../../SeriousProton
+cmake .. -DCMAKE_TOOLCHAIN_FILE=../cmake/android.toolchain -DSERIOUS_PROTON_DIR=../../SeriousProton -DCPACK_PACKAGE_VERSION_MAJOR="2020" -DCPACK_PACKAGE_VERSION_MINOR="11" -DCPACK_PACKAGE_VERSION_PATCH="23"
 make -j 3
 
 
