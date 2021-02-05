@@ -84,7 +84,7 @@ if [ ! -d _build_android ]; then
   mkdir _build_android
 fi
 cd _build_android
-cmake .. -DCMAKE_TOOLCHAIN_FILE=../cmake/android.toolchain -DSERIOUS_PROTON_DIR=../../SeriousProton -DCPACK_PACKAGE_VERSION_MAJOR="2020" -DCPACK_PACKAGE_VERSION_MINOR="11" -DCPACK_PACKAGE_VERSION_PATCH="23"
+cmake .. -DCMAKE_TOOLCHAIN_FILE=../cmake/android.toolchain -DCMAKE_MAKE_PROGRAM="/usr/bin/make" -DSERIOUS_PROTON_DIR=../../SeriousProton -DCPACK_PACKAGE_VERSION_MAJOR="2020" -DCPACK_PACKAGE_VERSION_MINOR="11" -DCPACK_PACKAGE_VERSION_PATCH="23"
 make -j 3
 
 
