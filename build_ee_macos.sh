@@ -103,7 +103,7 @@ then
   fi
 fi
 
-cp -r scripts/ EmptyEpsilon/
+cp -r scripts EmptyEpsilon
     echo "scripts copied"
 
 if [ "${EE_IS_ANDROID}" == "yes" ]
