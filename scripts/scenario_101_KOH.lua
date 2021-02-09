@@ -311,24 +311,24 @@ end
 
 --spawn player ships and inserts them into the playerShips table
 function spawnShips()
-    Alpha1 = PlayerSpaceship():setFaction("Alpha"):setCallSign("Alpha1"):setTemplate("Atlantis"):setPosition(-2491.26,-5595.47):setRotation(66)
+    Alpha1 = PlayerSpaceship():setFaction("Alpha"):setCallSign("Alpha1"):setTemplate("Atlantis"):setPosition(-2491.26,-5595.47):setRotation(66):commandTargetRotation(66)
     table.insert(playerShips, Alpha1)
-    Alpha2 = PlayerSpaceship():setFaction("Alpha"):setCallSign("Alpha2"):setTemplate("Atlantis"):setPosition(-5595.47,-2491.26):setRotation(33)
+    Alpha2 = PlayerSpaceship():setFaction("Alpha"):setCallSign("Alpha2"):setTemplate("Atlantis"):setPosition(-5595.47,-2491.26):setRotation(33):commandTargetRotation(33)
     table.insert(playerShips, Alpha2)
 
-    Bravo1 = PlayerSpaceship():setFaction("Bravo"):setCallSign("Bravo1"):setTemplate("Atlantis"):setPosition(2491.26,-5595.47):setRotation(123)
+    Bravo1 = PlayerSpaceship():setFaction("Bravo"):setCallSign("Bravo1"):setTemplate("Atlantis"):setPosition(2491.26,-5595.47):setRotation(123):commandTargetRotation(123)
     table.insert(playerShips,Bravo1)
-    Bravo2 = PlayerSpaceship():setFaction("Bravo"):setCallSign("Bravo2"):setTemplate("Atlantis"):setPosition(5595.47,-2491.26):setRotation(156)
+    Bravo2 = PlayerSpaceship():setFaction("Bravo"):setCallSign("Bravo2"):setTemplate("Atlantis"):setPosition(5595.47,-2491.26):setRotation(156):commandTargetRotation(156)
     table.insert(playerShips,Bravo2)
 
-    Charlie1 = PlayerSpaceship():setFaction("Charlie"):setCallSign("Charlie1"):setTemplate("Atlantis"):setPosition(-5595.47,2491.26):setRotation(336)
+    Charlie1 = PlayerSpaceship():setFaction("Charlie"):setCallSign("Charlie1"):setTemplate("Atlantis"):setPosition(-5595.47,2491.26):setRotation(336):commandTargetRotation(336)
     table.insert(playerShips, Charlie1)
-    Charlie2 = PlayerSpaceship():setFaction("Charlie"):setCallSign("Charlie2"):setTemplate("Atlantis"):setPosition(-2491.26,5595.47):setRotation(303)
+    Charlie2 = PlayerSpaceship():setFaction("Charlie"):setCallSign("Charlie2"):setTemplate("Atlantis"):setPosition(-2491.26,5595.47):setRotation(303):commandTargetRotation(303)
     table.insert(playerShips, Charlie2)
 
-    Delta1 = PlayerSpaceship():setFaction("Delta"):setCallSign("Delta1"):setTemplate("Atlantis"):setPosition(5595.47,2491.26):setRotation(204)
+    Delta1 = PlayerSpaceship():setFaction("Delta"):setCallSign("Delta1"):setTemplate("Atlantis"):setPosition(5595.47,2491.26):setRotation(204):commandTargetRotation(204)
     table.insert(playerShips, Delta1)
-    Delta2 = PlayerSpaceship():setFaction("Delta"):setCallSign("Delta2"):setTemplate("Atlantis"):setPosition(2491.26,5595.47):setRotation(237)
+    Delta2 = PlayerSpaceship():setFaction("Delta"):setCallSign("Delta2"):setTemplate("Atlantis"):setPosition(2491.26,5595.47):setRotation(237):commandTargetRotation(237)
     table.insert(playerShips, Delta2)
 end
 

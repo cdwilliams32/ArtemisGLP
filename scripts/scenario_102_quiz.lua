@@ -22,28 +22,24 @@ function init()
     ambush2 = CpuShip():setFaction("Exuari"):setTemplate("Dreadnought"):setCallSign("VK7"):setPosition(4900, 4650):orderIdle()
     ambush3 = CpuShip():setFaction("Exuari"):setTemplate("Dreadnought"):setCallSign("S6"):setPosition(9175, -5262):orderIdle()
 
-    poseidon1 = CpuShip():setFaction("USN"):setTemplate("Starhammer II"):setCallSign("PoseidonSpear1"):setPosition(-38788, 26876):orderIdle():setWeaponStorage("Homing", 3):setWeaponStorage("EMP", 1)
-    poseidon2 = CpuShip():setFaction("USN"):setTemplate("Starhammer II"):setCallSign("PoseidonSpear2"):setPosition(-38052, 33403):orderIdle():setWeaponStorage("Homing", 3):setWeaponStorage("EMP", 1)
-    poseidon3 = CpuShip():setFaction("USN"):setTemplate("Starhammer II"):setCallSign("PoseidonSpear3"):setPosition(-31320, 28747):orderIdle():setWeaponStorage("Homing", 3):setWeaponStorage("EMP", 1)
+    poseidon1 = CpuShip():setFaction("USN"):setTemplate("Starhammer II"):setCallSign("PoseidonSpear1"):setPosition(-19015, 20474):orderIdle():setWeaponStorage("Homing", 3):setWeaponStorage("EMP", 1)
+    poseidon2 = CpuShip():setFaction("USN"):setTemplate("Starhammer II"):setCallSign("PoseidonSpear2"):setPosition(-25747, 25130):orderIdle():setWeaponStorage("Homing", 3):setWeaponStorage("EMP", 1)
+    poseidon3 = CpuShip():setFaction("USN"):setTemplate("Starhammer II"):setCallSign("PoseidonSpear3"):setPosition(-26483, 18603):orderIdle():setWeaponStorage("Homing", 3):setWeaponStorage("EMP", 1)
 
-    DS449 = SpaceStation():setTemplate("Large Station"):setFaction("USN"):setCallSign("DS449"):setPosition(-10124, 30058)
-    B9 = SpaceStation():setTemplate("Huge Station"):setFaction("USN"):setCallSign("B9"):setPosition(-36111, 29775)
-    DS450 = SpaceStation():setTemplate("Large Station"):setFaction("USN"):setCallSign("DS450"):setPosition(-39042, 16666)
+    DS449 = SpaceStation():setTemplate("Large Station"):setFaction("USN"):setCallSign("DS449"):setPosition(-7795, 24427)
+    B9 = SpaceStation():setTemplate("Huge Station"):setFaction("USN"):setCallSign("B9"):setPosition(-23806, 21502)
+    DS450 = SpaceStation():setTemplate("Large Station"):setFaction("USN"):setCallSign("DS450"):setPosition(-32090, 11834)
 
 
-    patrol1 = CpuShip():setFaction("USN"):setTemplate("Adder MK4"):setCallSign("CV11"):setPosition(-12854, 26930):orderFlyTowards(DS449:getPosition()):setWeaponStorage("HVLI", 1)
-    patrol2 = CpuShip():setFaction("USN"):setTemplate("Adder MK4"):setCallSign("NC12"):setPosition(-13440, 28020):orderFlyTowards(DS449:getPosition()):setWeaponStorage("HVLI", 1)
-    patrol3 = CpuShip():setFaction("USN"):setTemplate("Adder MK4"):setCallSign("CV10"):setPosition(-14463, 27548):orderFlyTowards(DS449:getPosition()):setWeaponStorage("HVLI", 1)
+    patrol1 = CpuShip():setFaction("USN"):setTemplate("Adder MK4"):setCallSign("CV11"):setPosition(-10341, 21550):orderFlyTowards(DS449:getPosition()):setWeaponStorage("HVLI", 1)
+    patrol2 = CpuShip():setFaction("USN"):setTemplate("Adder MK4"):setCallSign("NC12"):setPosition(-11898, 22393):orderFlyTowards(DS449:getPosition()):setWeaponStorage("HVLI", 1)
+    patrol3 = CpuShip():setFaction("USN"):setTemplate("Adder MK4"):setCallSign("CV10"):setPosition(-11042, 22893):orderFlyTowards(DS449:getPosition()):setWeaponStorage("HVLI", 1)
 
     ES = SpaceStation():setTemplate("Medium Station"):setFaction("Exuari"):setCallSign("DS458"):setPosition(-39840, -10264)
     EDP1 = CpuShip():setFaction("Exuari"):setTemplate("Defense platform"):setCallSign("CCN14"):setPosition(-44263, -9579):orderDefendLocation(ES:getPosition())
     EDP2 = CpuShip():setFaction("Exuari"):setTemplate("Defense platform"):setCallSign("CV15"):setPosition(-37602, -13842):orderDefendLocation(ES:getPosition())
     EDP3 = CpuShip():setFaction("Exuari"):setTemplate("Defense platform"):setCallSign("SS13"):setPosition(-37141, -6246):orderDefendLocation(ES:getPosition())
     
-
-  
-
-
 
 end
 
