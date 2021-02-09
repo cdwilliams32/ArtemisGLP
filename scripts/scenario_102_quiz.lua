@@ -1,5 +1,5 @@
 -- Name: Quiz
--- Description: Help understand how Empty Epsilon works.
+-- Description: After investigating a point of interest, Atlantis needs to return back to base for its next mission. Be careful, there is sightings of enemy ships.
 -- Type: Basic
 
 --- Scenario
@@ -18,9 +18,6 @@ function init()
     player = PlayerSpaceship():setTemplate("Atlantis"):setPosition(17571, 3998):setFaction("USN")
     firstCPU = CpuShip():setFaction("Exuari"):setTemplate("Adder MK3"):setCallSign("BR3"):setPosition(-1699, -3808):setWeaponStorage("HVLI", 0)
 
-    ambush1 = CpuShip():setFaction("Exuari"):setTemplate("Dreadnought"):setCallSign("CCN5"):setPosition(-1723, -2476):orderIdle()
-    ambush2 = CpuShip():setFaction("Exuari"):setTemplate("Dreadnought"):setCallSign("VK7"):setPosition(4900, 4650):orderIdle()
-    ambush3 = CpuShip():setFaction("Exuari"):setTemplate("Dreadnought"):setCallSign("S6"):setPosition(9175, -5262):orderIdle()
 
     poseidon1 = CpuShip():setFaction("USN"):setTemplate("Starhammer II"):setCallSign("PoseidonSpear1"):setPosition(-19015, 20474):orderIdle():setWeaponStorage("Homing", 3):setWeaponStorage("EMP", 1)
     poseidon2 = CpuShip():setFaction("USN"):setTemplate("Starhammer II"):setCallSign("PoseidonSpear2"):setPosition(-25747, 25130):orderIdle():setWeaponStorage("Homing", 3):setWeaponStorage("EMP", 1)
@@ -36,9 +33,9 @@ function init()
     patrol3 = CpuShip():setFaction("USN"):setTemplate("Adder MK4"):setCallSign("CV10"):setPosition(-11042, 22893):orderFlyTowards(DS449:getPosition()):setWeaponStorage("HVLI", 1)
 
     ES = SpaceStation():setTemplate("Medium Station"):setFaction("Exuari"):setCallSign("DS458"):setPosition(-39840, -10264)
-    EDP1 = CpuShip():setFaction("Exuari"):setTemplate("Defense platform"):setCallSign("CCN14"):setPosition(-44263, -9579):orderDefendLocation(ES:getPosition())
-    EDP2 = CpuShip():setFaction("Exuari"):setTemplate("Defense platform"):setCallSign("CV15"):setPosition(-37602, -13842):orderDefendLocation(ES:getPosition())
-    EDP3 = CpuShip():setFaction("Exuari"):setTemplate("Defense platform"):setCallSign("SS13"):setPosition(-37141, -6246):orderDefendLocation(ES:getPosition())
+    EDP1 = CpuShip():setFaction("Exuari"):setTemplate("Defense platform"):setCallSign("CCN14"):setPosition(-44263, -9579):orderRoaming()
+    EDP2 = CpuShip():setFaction("Exuari"):setTemplate("Defense platform"):setCallSign("CV15"):setPosition(-37602, -13842):orderRoaming()
+    EDP3 = CpuShip():setFaction("Exuari"):setTemplate("Defense platform"):setCallSign("SS13"):setPosition(-37141, -6246):orderRoaming()
     
 
 end
@@ -56,6 +53,9 @@ function update(delta)
     end
     if (gameState == 1 and not firstCPU:isValid())
     then
+        ambush1 = CpuShip():setFaction("Exuari"):setTemplate("Dreadnought"):setCallSign("CCN5"):setPosition(-1723, -2476):orderIdle()
+        ambush2 = CpuShip():setFaction("Exuari"):setTemplate("Dreadnought"):setCallSign("VK7"):setPosition(4900, 4650):orderIdle()
+        ambush3 = CpuShip():setFaction("Exuari"):setTemplate("Dreadnought"):setCallSign("S6"):setPosition(9175, -5262):orderIdle()
         print("Ambush!")
         local x,y = player:getPosition()
         x = x - 2500
