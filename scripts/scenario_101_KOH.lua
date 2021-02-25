@@ -97,38 +97,38 @@ function checkPoints()
     do
         if innerZone:isInside(playerShips[i])
         then
-            if (i == 1 or i == 2)
+            if (i == 1 or i == 2) --Alpha
             then
                 teamPoints[1] = teamPoints[1] + 1
             end
-            if (i == 3 or i == 4)
+            if (i == 3 or i == 4) -- Bravo
             then
                 teamPoints[2] = teamPoints[2] + 1
             end
-            if (i == 5 or i == 6)
+            if (i == 5 or i == 6) -- Charlie
             then
                 teamPoints[3] = teamPoints[3] + 1
             end
-            if (i == 7 or i == 8)
+            if (i == 7 or i == 8) -- Delta
             then
                 teamPoints[4] = teamPoints[4] + 1
             end
         end
         if middleZone:isInside(playerShips[i])
         then
-            if (i == 1 or i == 2)
+            if (i == 1 or i == 2) -- Alpha
             then
                 teamPoints[1] = teamPoints[1] + 1
             end
-            if (i == 3 or i == 4)
+            if (i == 3 or i == 4) -- Bravo
             then
                 teamPoints[2] = teamPoints[2] + 1
             end
-            if (i == 5 or i == 6)
+            if (i == 5 or i == 6) -- Charlie
             then
                 teamPoints[3] = teamPoints[3] + 1
             end
-            if (i == 7 or i == 8)
+            if (i == 7 or i == 8) -- Delta
             then
                 teamPoints[4] = teamPoints[4] + 1
             end
