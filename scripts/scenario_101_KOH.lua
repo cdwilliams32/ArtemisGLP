@@ -201,42 +201,42 @@ end
 function respawnShips(index)
     if (index==1)
     then
-        Alpha1 = PlayerSpaceship():setFaction("Alpha"):setCallSign("Alpha1"):setTemplate("Atlantis"):setPosition(-2491.26,-5595.47):setRotation(66)
+        Alpha1 = PlayerSpaceship():setFaction("Alpha"):setCallSign("Alpha1"):setTemplate("Atlantis"):setPosition(-2491.26,-5595.47):setRotation(66):commandTargetRotation(66)
         return Alpha1
     end
     if (index==2)
     then
-        Alpha2 = PlayerSpaceship():setFaction("Alpha"):setCallSign("Alpha2"):setTemplate("Atlantis"):setPosition(-5595.47,-2491.26):setRotation(33)
+        Alpha2 = PlayerSpaceship():setFaction("Alpha"):setCallSign("Alpha2"):setTemplate("Atlantis"):setPosition(-5595.47,-2491.26):setRotation(33):commandTargetRotation(33)
         return Alpha2
     end
     if (index==3)
     then
-        Bravo1 = PlayerSpaceship():setFaction("Bravo"):setCallSign("Bravo1"):setTemplate("Atlantis"):setPosition(2491.26,-5595.47):setRotation(123)
+        Bravo1 = PlayerSpaceship():setFaction("Bravo"):setCallSign("Bravo1"):setTemplate("Atlantis"):setPosition(2491.26,-5595.47):setRotation(123):commandTargetRotation(123)
         return Bravo1
     end
     if (index==4)
     then
-        Bravo2 = PlayerSpaceship():setFaction("Bravo"):setCallSign("Bravo2"):setTemplate("Atlantis"):setPosition(5595.47,-2491.26):setRotation(156)
+        Bravo2 = PlayerSpaceship():setFaction("Bravo"):setCallSign("Bravo2"):setTemplate("Atlantis"):setPosition(5595.47,-2491.26):setRotation(156):commandTargetRotation(156)
         return Bravo2
     end
     if (index==5)
     then
-        Charlie1 = PlayerSpaceship():setFaction("Charlie"):setCallSign("Charlie1"):setTemplate("Atlantis"):setPosition(-5595.47,2491.26):setRotation(336)
+        Charlie1 = PlayerSpaceship():setFaction("Charlie"):setCallSign("Charlie1"):setTemplate("Atlantis"):setPosition(-5595.47,2491.26):setRotation(336):commandTargetRotation(336)
         return Charlie1
     end
     if (index==6)
     then
-        Charlie2 = PlayerSpaceship():setFaction("Charlie"):setCallSign("Charlie2"):setTemplate("Atlantis"):setPosition(-2491.26,5595.47):setRotation(303)
+        Charlie2 = PlayerSpaceship():setFaction("Charlie"):setCallSign("Charlie2"):setTemplate("Atlantis"):setPosition(-2491.26,5595.47):setRotation(303):commandTargetRotation(303)
         return Charlie2
     end
     if (index==7)
     then
-        Delta1 = PlayerSpaceship():setFaction("Delta"):setCallSign("Delta1"):setTemplate("Atlantis"):setPosition(5595.47,2491.26):setRotation(204)
+        Delta1 = PlayerSpaceship():setFaction("Delta"):setCallSign("Delta1"):setTemplate("Atlantis"):setPosition(5595.47,2491.26):setRotation(204):commandTargetRotation(204)
         return Delta1
     end
     if (index==8)
     then
-        Delta2 = PlayerSpaceship():setFaction("Delta"):setCallSign("Delta2"):setTemplate("Atlantis"):setPosition(2491.26,5595.47):setRotation(237)
+        Delta2 = PlayerSpaceship():setFaction("Delta"):setCallSign("Delta2"):setTemplate("Atlantis"):setPosition(2491.26,5595.47):setRotation(237):commandTargetRotation(237)
         return Delta2
     end
 end
