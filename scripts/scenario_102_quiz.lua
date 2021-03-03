@@ -12,10 +12,15 @@ function init()
     gameState = 0
     timer = 0
     supportComing = 0
+    poseidonState = 0
 
     spawnWorld()
 
-    player = PlayerSpaceship():setTemplate("Atlantis"):setPosition(17571, 3998):setFaction("USN")
+    ambush1 = CpuShip():setFaction("Exuari"):setTemplate("Dreadnought"):setCallSign("CCN5"):setPosition(-42041, -13178):orderIdle()
+    ambush2 = CpuShip():setFaction("Exuari"):setTemplate("Dreadnought"):setCallSign("VK7"):setPosition(-40626, -6421):orderIdle()
+    ambush3 = CpuShip():setFaction("Exuari"):setTemplate("Dreadnought"):setCallSign("S6"):setPosition(-35446, -9722):orderIdle()
+
+    player = PlayerSpaceship():setTemplate("Atlantis"):setPosition(17571, 3998):setFaction("USN"):setCallSign("spe")
     firstCPU = CpuShip():setFaction("Exuari"):setTemplate("Adder MK3"):setCallSign("BR3"):setPosition(-1699, -3808):setWeaponStorage("HVLI", 0)
 
 
@@ -36,12 +41,18 @@ function init()
     EDP1 = CpuShip():setFaction("Exuari"):setTemplate("Defense platform"):setCallSign("CCN14"):setPosition(-44263, -9579):orderRoaming()
     EDP2 = CpuShip():setFaction("Exuari"):setTemplate("Defense platform"):setCallSign("CV15"):setPosition(-37602, -13842):orderRoaming()
     EDP3 = CpuShip():setFaction("Exuari"):setTemplate("Defense platform"):setCallSign("SS13"):setPosition(-37141, -6246):orderRoaming()
+
+
     
 
 end
 
 function update(delta)
     patrolUpdate()
+    if poseidonState == 1
+    then
+        poseidonUpdate()
+    end
     if gameState == 0
     then
         if distance(firstCPU,player) < 15000
@@ -53,9 +64,7 @@ function update(delta)
     end
     if (gameState == 1 and not firstCPU:isValid())
     then
-        ambush1 = CpuShip():setFaction("Exuari"):setTemplate("Dreadnought"):setCallSign("CCN5"):setPosition(-1723, -2476):orderIdle()
-        ambush2 = CpuShip():setFaction("Exuari"):setTemplate("Dreadnought"):setCallSign("VK7"):setPosition(4900, 4650):orderIdle()
-        ambush3 = CpuShip():setFaction("Exuari"):setTemplate("Dreadnought"):setCallSign("S6"):setPosition(9175, -5262):orderIdle()
+        
         print("Ambush!")
         local x,y = player:getPosition()
         x = x - 2500
@@ -138,9 +147,10 @@ function update(delta)
     end
     if not ambush1:isValid() and not ambush2:isValid() and not ambush3:isValid() and gameState < 4
     then
-        poseidon3:orderIdle()
-        poseidon2:orderIdle()
-        poseidon1:orderIdle()
+        poseidon3:orderFlyTowards(DS449:getPosition())
+        poseidon2:orderFlyTowards(DS449:getPosition())
+        poseidon1:orderFlyTowards(DS449:getPosition())
+        poseidonState = 1
     end
     if not ES:isValid()
     then
@@ -152,6 +162,7 @@ function update(delta)
     end
     if supportComing == 1
     then
+        poseidonState = 2
         local x,y = player:getPosition()
             x = x - 3500
             y = y + 2500
@@ -201,6 +212,21 @@ function patrolUpdate()
         patrol1:orderFlyTowards(DS449:getPosition())
         patrol2:orderFlyTowards(DS449:getPosition())
         patrol3:orderFlyTowards(DS449:getPosition())
+    end
+end
+
+function poseidonUpdate()
+    if (distance(poseidon1,DS449) < 3000 or distance(poseidon2,DS449) < 3000 or distance(poseidon3,DS449) < 3000)
+    then
+        poseidon1:orderFlyTowards(DS450:getPosition())
+        poseidon2:orderFlyTowards(DS450:getPosition())
+        poseidon3:orderFlyTowards(DS450:getPosition())
+    end
+    if (distance(poseidon1,DS450) < 3000 or distance(poseidon2,DS450) < 3000 or distance(poseidon3,DS450) < 3000)
+    then
+        poseidon1:orderFlyTowards(DS449:getPosition())
+        poseidon2:orderFlyTowards(DS449:getPosition())
+        poseidon3:orderFlyTowards(DS449:getPosition())
     end
 end
 

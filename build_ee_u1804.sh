@@ -70,7 +70,9 @@ then
     libudev-dev libglew-dev libjpeg-dev libfreetype6-dev \
     libopenal-dev libsndfile1-dev libxcb1-dev \
     libxcb-image0-dev mingw-w64 cmake gcc g++ zip \
-    unzip p7zip-full python3-minimal openjdk-8-jdk libxcursor-dev && # libsfml-dev
+    unzip p7zip-full python3-minimal openjdk-8-jdk \
+    build-essential cmake python3-minimal mingw-w64 \
+    ninja-build p7zip-full && # libsfml-dev
     echo "!   Tools installed."
 
   # Get SFML.
@@ -92,11 +94,7 @@ then
     echo "Cloning SeriousProton repo to ${EE_BUILD_SP}..."
     git clone https://github.com/daid/SeriousProton.git "${EE_BUILD_SP}" &&
     echo "!   SeriousProton source cloned."
-  else
-    echo "Fetching and fast-forwarding SeriousProton repo at ${EE_BUILD_SP}..."
-    ( cd "${EE_BUILD_SP}" &&
-      git fetch --all && git merge --ff-only &&
-      echo "!   SeriousProton source is up to date." )
+    
   fi
 
   if [ ! -d "${EE_BUILD_EE}" ]
@@ -104,13 +102,18 @@ then
     echo "Cloning EmptyEpsilon repo to ${EE_BUILD_EE}..."
     git clone https://github.com/daid/EmptyEpsilon.git "${EE_BUILD_EE}" &&
     echo "!   EmptyEpsilon source cloned."
+
+    cd SeriousProton
+    git checkout EE-"${EE_BUILD_DATE_YEAR}"."${EE_BUILD_DATE_MONTH}"."${EE_BUILD_DATE_DAY}"
+    cd ../EmptyEpsilon
+    git checkout EE-"${EE_BUILD_DATE_YEAR}"."${EE_BUILD_DATE_MONTH}"."${EE_BUILD_DATE_DAY}"
+    cd ..
+    echo "checkouted out"
+
+    
     cp -r scripts/ EmptyEpsilon/
     echo "scripts copied"
-  else
-    echo "Fetching and fast-forwarding EmptyEpsilon repo at ${EE_BUILD_EE}..."
-    ( cd "${EE_BUILD_EE}" &&
-      git fetch --all && git merge --ff-only &&
-      echo "!   EmptyEpsilon source is up to date." )
+  
   fi
 
   # Build SFML.
@@ -127,18 +130,47 @@ then
       echo "!   SFML libraries linked." )
 fi
 
+
+
+
 # Write commit IDs for each repo into a file for reference.
-echo "Saving commit IDs..."
-for i in "${EE_BUILD_SP}" "${EE_BUILD_EE}" "${EE_BUILD_SFML}"
-do
-  ( cd "${i}" &&
-    echo "-   $(git log --pretty='oneline' -n 1)" )
-done
+#echo "Saving commit IDs..."
+#for i in "${EE_BUILD_SP}" "${EE_BUILD_EE}" "${EE_BUILD_SFML}"
+#do
+#  ( cd "${i}" &&
+#    echo "-   $(git log --pretty='oneline' -n 1)" )
+#done
 
 
 for arg in "$@"
 do
-  if [ "$arg" == "win32" ]
+  if [ "$arg" == "win" ]
+  then
+    # Build EmptyEpsilon for Windows.
+    echo "Building EmptyEpsilon for win32..."
+    # discord/gamesdk-and-dispatch#100
+    # discord_game_sdk.h uses uppercase Windows.h.
+    # If we don't have one too, the build breaks.
+    # Computers are the single greatest advancement in the history of humanity.
+    if [ ! -f "/usr/share/mingw-w64/include/Windows.h" ]
+    then
+      for i in $(dirname $(find /usr -iname windows.h))
+      do
+        sudo ln -s ${i}/windows.h ${i}/Windows.h
+      done
+    fi
+    ( cd "${EE_BUILD_EE}" &&
+        mkdir -p "${EE_BUILD_EE_WIN32}" &&
+        cd "${EE_BUILD_EE_WIN32}" &&
+        cmake .. -G Ninja -DCMAKE_MAKE_PROGRAM=ninja \
+        -DCMAKE_TOOLCHAIN_FILE="${EE_BUILD_CMAKE}/mingw.toolchain" \
+        -DSERIOUS_PROTON_DIR="${EE_BUILD_SP}" \
+        -DCPACK_PACKAGE_VERSION_MAJOR="${EE_BUILD_DATE_YEAR}" \
+        -DCPACK_PACKAGE_VERSION_MINOR="${EE_BUILD_DATE_MONTH}" \
+        -DCPACK_PACKAGE_VERSION_PATCH="${EE_BUILD_DATE_DAY}" && 
+        make -j"${EE_THREADS}" package &&
+        echo "!   win32 build complete to ${EE_BUILD_EE_WIN32}/EmptyEpsilon.zip" )
+  elif [ "$arg" == "win32" ]
   then
     # Build EmptyEpsilon for Windows.
     echo "Building EmptyEpsilon for win32..."

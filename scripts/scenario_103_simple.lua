@@ -11,10 +11,15 @@ function init()
     gameState = 0
     spawnWorld()
 
-    player = PlayerSpaceship():setTemplate("Atlantis"):setPosition(115, 70):setFaction("Human Navy")
+    player = PlayerSpaceship():setTemplate("Atlantis"):setPosition(115, 70):setFaction("Human Navy"):setCallSign("primus")
     gStation = SpaceStation():setTemplate("Large Station"):setFaction("Human Navy"):setCallSign("DS9428"):setPosition(17506, 172)
     bStation = SpaceStation():setTemplate("Small Station"):setFaction("Exuari"):setCallSign("DS9431"):setPosition(24513, -11338)
     en1 = CpuShip():setFaction("Exuari"):setTemplate("Adder MK3"):setCallSign("UTI3"):setPosition(11009, -8):setWeaponStorage("HVLI", 1):orderIdle()
+
+    en2 = CpuShip():setFaction("Exuari"):setTemplate("Atlantis X23"):setCallSign("SS6"):setPosition(-271325, -334973):orderIdle():setWeaponStorage("Homing", 0):setWeaponStorage("HVLI", 16)
+    en3 = CpuShip():setFaction("Exuari"):setTemplate("Atlantis X23"):setCallSign("BR7"):setPosition(-277237, -326680):orderIdle():setWeaponStorage("Homing", 0):setWeaponStorage("HVLI", 16)
+    en4 = CpuShip():setFaction("Exuari"):setTemplate("Atlantis X23"):setCallSign("VS5"):setPosition(-281502, -334234):orderIdle():setWeaponStorage("Homing", 0):setWeaponStorage("HVLI", 16)
+
 
 end
 
@@ -32,9 +37,9 @@ function update(delta)
     then
         if not bStation:isValid()
         then
-            en2 = CpuShip():setFaction("Exuari"):setTemplate("Atlantis X23"):setCallSign("SS6"):setPosition(30332, -14223):setWeaponStorage("Homing", 0):orderAttack(player)
-            en3 = CpuShip():setFaction("Exuari"):setTemplate("Atlantis X23"):setCallSign("BR7"):setPosition(19972, -13638):setWeaponStorage("Homing", 0):orderAttack(player)
-            en4 = CpuShip():setFaction("Exuari"):setTemplate("Atlantis X23"):setCallSign("VS5"):setPosition(24326, -5862):setWeaponStorage("Homing", 0):orderAttack(player)
+            en2:setPosition(30332, -14223):setWeaponStorage("Homing", 0):orderAttack(player)
+            en3:setPosition(19972, -13638):setWeaponStorage("Homing", 0):orderAttack(player)
+            en4:setPosition(24326, -5862):setWeaponStorage("Homing", 0):orderAttack(player)
             gameState = 2
         end
     end
@@ -117,7 +122,3 @@ function spawnWorld()
     Mine():setPosition(13445, 2563)
     Mine():setPosition(12809, 3702)
 end
-
-
-
-

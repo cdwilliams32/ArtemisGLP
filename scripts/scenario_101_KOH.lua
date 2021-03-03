@@ -12,7 +12,7 @@ function init()
     spaceStations = {}
     teamPoints = {0,0,0,0}
     time = 0
-    
+
     --spawn artifacts
     spawnArtifacts()
     --spawn zones
@@ -21,6 +21,7 @@ function init()
     spawnShips()
     --spawn stations
     spawnStations()
+
 end
 
 --updates every 1 millisecond

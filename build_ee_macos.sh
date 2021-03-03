@@ -83,26 +83,21 @@ then
     echo "Cloning SeriousProton repo to ${EE_BUILD_SP}..."
     git clone https://github.com/daid/SeriousProton.git "${EE_BUILD_SP}" &&
       echo "!   SeriousProton source downloaded."
-  else
-    echo "Fetching and fast-forwarding SeriousProton repo at ${EE_BUILD_SP}..."
-    ( cd "${EE_BUILD_SP}"
-      git fetch --all && git merge --ff-only &&
-        echo "!   SeriousProton source updated." )
   fi
 
   if [ ! -d "${EE_BUILD_EE}" ]
   then
     echo "Cloning EmptyEpsilon repo to ${EE_BUILD_EE}..."
     git clone https://github.com/daid/EmptyEpsilon.git "${EE_BUILD_EE}"
-    
-  else
-    echo "Fetching and fast-forwarding EmptyEpsilon repo at ${EE_BUILD_EE}..."
-    ( cd "${EE_BUILD_EE}"
-      git fetch --all && git merge --ff-only &&
-        echo "!   EmptyEpsilon source updated." )
-  fi
 fi
 
+cd SeriousProton
+    git checkout EE-"${EE_BUILD_DATE_YEAR}"."${EE_BUILD_DATE_MONTH}"."${EE_BUILD_DATE_DAY}"
+    cd ../EmptyEpsilon
+    git checkout EE-"${EE_BUILD_DATE_YEAR}"."${EE_BUILD_DATE_MONTH}"."${EE_BUILD_DATE_DAY}"
+    cd ..
+    echo "checkouted out"
+    
 cp -r scripts EmptyEpsilon
     echo "scripts copied"
 
