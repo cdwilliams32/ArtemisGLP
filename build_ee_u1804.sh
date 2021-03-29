@@ -72,7 +72,7 @@ then
     libxcb-image0-dev mingw-w64 cmake gcc g++ zip \
     unzip p7zip-full python3-minimal openjdk-8-jdk \
     build-essential cmake python3-minimal mingw-w64 \
-    ninja-build p7zip-full && libxcursor-dev #libsfml-dev
+    ninja-build p7zip-full libxcursor-dev #libsfml-dev
     echo "!   Tools installed."
 
   # Get SFML.

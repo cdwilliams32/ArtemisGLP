@@ -1,0 +1,9 @@
+
+
+EmptyEpsilon headless=scenario_102_quiz.lua headless_name=Det003 headless_password=Det003 headless_internet=1 startpaused=1 httpserver=8080
+
+
+
+curl --data "PlayerSpaceship():setFaction('Human Navy'):setTemplate('Atlantis')" http://localhost:8080/exec.lua
+curl --data "unpauseGame()" http://192.168.10.159:8080/exec.lua
+curl --data "shutdownGame()" http://localhost:8080/exec.lua
