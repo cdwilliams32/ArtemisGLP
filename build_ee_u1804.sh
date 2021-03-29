@@ -44,10 +44,10 @@ do
   fi
 done
 
-echo "-   Using 20201123 as the EmptyEpsilon version."
-EE_BUILD_DATE_YEAR="2020"
-EE_BUILD_DATE_MONTH="11"
-EE_BUILD_DATE_DAY="23"
+echo "-   Using ${EE_BUILD_DATE} as the EmptyEpsilon version."
+EE_BUILD_DATE_YEAR="${EE_BUILD_DATE:0:4}"
+EE_BUILD_DATE_MONTH="${EE_BUILD_DATE:4:2}"
+EE_BUILD_DATE_DAY="${EE_BUILD_DATE:6:2}"
 
 if [ "${EE_UPDATE}" == "yes" ]
 then
@@ -72,7 +72,7 @@ then
     libxcb-image0-dev mingw-w64 cmake gcc g++ zip \
     unzip p7zip-full python3-minimal openjdk-8-jdk \
     build-essential cmake python3-minimal mingw-w64 \
-    ninja-build p7zip-full && # libsfml-dev
+    ninja-build p7zip-full && libxcursor-dev #libsfml-dev
     echo "!   Tools installed."
 
   # Get SFML.
