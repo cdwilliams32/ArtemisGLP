@@ -116,7 +116,7 @@ then
   
   fi
 
-  cd SeriousProton
+  cd ../SeriousProton
     git checkout EE-"${EE_BUILD_DATE_YEAR}"."${EE_BUILD_DATE_MONTH}"."${EE_BUILD_DATE_DAY}"
     cd ../EmptyEpsilon
     git checkout EE-"${EE_BUILD_DATE_YEAR}"."${EE_BUILD_DATE_MONTH}"."${EE_BUILD_DATE_DAY}"
