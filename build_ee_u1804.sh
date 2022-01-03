@@ -203,7 +203,7 @@ do
     ( cd "${EE_BUILD_EE}" &&
         mkdir -p "${EE_BUILD_EE_LINUX}" &&
         cd "${EE_BUILD_EE_LINUX}" &&
-        cmake .. -DSERIOUS_PROTON_DIR="${EE_BUILD_SP}" \
+        cmake .. -G Ninja -DSERIOUS_PROTON_DIR="${EE_BUILD_SP}" \
           -DCMAKE_MAKE_PROGRAM="${EE_BUILD_MAKE}" \
           -DCPACK_PACKAGE_VERSION_MAJOR="${EE_BUILD_DATE_YEAR}" \
           -DCPACK_PACKAGE_VERSION_MINOR="${EE_BUILD_DATE_MONTH}" \
