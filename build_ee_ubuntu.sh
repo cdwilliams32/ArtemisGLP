@@ -2,7 +2,7 @@
 SFML_ROOT="/usr/local/lib"
 SFML_INCLUDE_DIR="/usr/local/include/SFML"
 EE_BUILD_HOME=`pwd`
-EE_BUILD_SFML="${EE_BUILD_HOME}/SFML"
+EE_BUILD_SFML="${EE_BUILD_HOME}/../SFML"
 EE_BUILD_EE="${EE_BUILD_HOME}/../EmptyEpsilon"
 EE_BUILD_EE_WIN32="${EE_BUILD_EE}/_build_win32"
 EE_BUILD_EE_LINUX="${EE_BUILD_EE}/_build_linux"
@@ -106,7 +106,7 @@ then
     
 
     
-    cp -r scripts/ EmptyEpsilon/
+    cp -r ${EE_BUILD_HOME}/scripts/ ${EE_BUILD_EE}
     echo "scripts copied"
   
   fi
@@ -115,21 +115,20 @@ then
   git checkout EE-"${EE_BUILD_DATE_YEAR}"."${EE_BUILD_DATE_MONTH}"."${EE_BUILD_DATE_DAY}"
   cd ${EE_BUILD_EE}
   git checkout EE-"${EE_BUILD_DATE_YEAR}"."${EE_BUILD_DATE_MONTH}"."${EE_BUILD_DATE_DAY}"
-  cd ..
   echo "checkouted out"
 
-#   # Build SFML.
-#   echo "Building SFML..."
-#   ( cd "${EE_BUILD_SFML}" &&
-#       mkdir -p "${EE_BUILD_SFML}/_build" &&
-#       cd "${EE_BUILD_SFML}/_build" &&
-#       cmake "${EE_BUILD_SFML}" &&
-#       make &&
-#       echo "!   SFML built." &&
-#       sudo make install &&
-#       echo "!   SFML installed." &&
-#       sudo ldconfig &&
-#       echo "!   SFML libraries linked." )
+  # Build SFML.
+  # echo "Building SFML..."
+  # ( cd "${EE_BUILD_SFML}" &&
+  #     mkdir -p "${EE_BUILD_SFML}/_build" &&
+  #     cd "${EE_BUILD_SFML}/_build" &&
+  #     cmake "${EE_BUILD_SFML}" &&
+  #     make &&
+  #     echo "!   SFML built." &&
+  #     sudo make install &&
+  #     echo "!   SFML installed." &&
+  #     sudo ldconfig &&
+  #     echo "!   SFML libraries linked." )
 fi
 
 

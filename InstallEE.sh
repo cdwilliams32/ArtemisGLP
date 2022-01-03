@@ -1,6 +1,6 @@
 #!/bin/bash
 EE_BUILD_HOME=`pwd`
-EE_BUILD_EE="${EE_BUILD_HOME}/EmptyEpsilon"
+EE_BUILD_EE="${EE_BUILD_HOME}/../EmptyEpsilon"
 EE_BUILD_EE_LINUX="${EE_BUILD_EE}/_build_linux"
 
 echo "Installing ${EE_BUILD_EE_LINUX}/EmptyEpsilon.deb"
