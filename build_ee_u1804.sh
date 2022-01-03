@@ -3,14 +3,14 @@ SFML_ROOT="/usr/local/lib"
 SFML_INCLUDE_DIR="/usr/local/include/SFML"
 EE_BUILD_HOME=`pwd`
 EE_BUILD_SFML="${EE_BUILD_HOME}/SFML"
-EE_BUILD_EE="${EE_BUILD_HOME}/EmptyEpsilon"
+EE_BUILD_EE="${EE_BUILD_HOME}/../EmptyEpsilon"
 EE_BUILD_EE_WIN32="${EE_BUILD_EE}/_build_win32"
 EE_BUILD_EE_LINUX="${EE_BUILD_EE}/_build_linux"
 EE_BUILD_EE_ANDROID="${EE_BUILD_EE}/_build_android"
 EE_BUILD_EE_ANDROID_KEYSTORE="$HOME/.keystore"
 EE_BUILD_EE_ANDROID_KEYSTORE_ALIAS="Android"
 EE_BUILD_EE_ANDROID_KEYSTORE_PASSWORD="password"
-EE_BUILD_SP="${EE_BUILD_HOME}/SeriousProton"
+EE_BUILD_SP="${EE_BUILD_HOME}/../SeriousProton"
 EE_BUILD_DATE="$(date +'%Y%m%d')"
 EE_BUILD_CMAKE="${EE_BUILD_EE}/cmake"
 EE_BUILD_MAKE="/usr/bin/make"
@@ -76,17 +76,17 @@ then
     echo "!   Tools installed."
 
   # Get SFML.
-  if [ ! -d "${EE_BUILD_SFML}" ]
-  then
-    echo "Cloning SFML repo to ${EE_BUILD_SFML}..."
-    git clone https://github.com/SFML/SFML.git "${EE_BUILD_SFML}" &&
-    echo "!   SFML source cloned."
-  else
-    echo "Fetching and fast-forwarding SFML repo at ${EE_BUILD_SFML}..."
-    ( cd "${EE_BUILD_SFML}" &&
-      git fetch --all && git merge --ff-only &&
-      echo "!   SFML source is up to date." )
-  fi
+  # if [ ! -d "${EE_BUILD_SFML}" ]
+  # then
+  #   echo "Cloning SFML repo to ${EE_BUILD_SFML}..."
+  #   git clone https://github.com/SFML/SFML.git "${EE_BUILD_SFML}" &&
+  #   echo "!   SFML source cloned."
+  # else
+  #   echo "Fetching and fast-forwarding SFML repo at ${EE_BUILD_SFML}..."
+  #   ( cd "${EE_BUILD_SFML}" &&
+  #     git fetch --all && git merge --ff-only &&
+  #     echo "!   SFML source is up to date." )
+  # fi
 
   # Get SeriousProton and EmptyEpsilon.
   if [ ! -d "${EE_BUILD_SP}" ]
@@ -116,18 +116,18 @@ then
   
   fi
 
-  # Build SFML.
-  echo "Building SFML..."
-  ( cd "${EE_BUILD_SFML}" &&
-      mkdir -p "${EE_BUILD_SFML}/_build" &&
-      cd "${EE_BUILD_SFML}/_build" &&
-      cmake "${EE_BUILD_SFML}" &&
-      make &&
-      echo "!   SFML built." &&
-      sudo make install &&
-      echo "!   SFML installed." &&
-      sudo ldconfig &&
-      echo "!   SFML libraries linked." )
+#   # Build SFML.
+#   echo "Building SFML..."
+#   ( cd "${EE_BUILD_SFML}" &&
+#       mkdir -p "${EE_BUILD_SFML}/_build" &&
+#       cd "${EE_BUILD_SFML}/_build" &&
+#       cmake "${EE_BUILD_SFML}" &&
+#       make &&
+#       echo "!   SFML built." &&
+#       sudo make install &&
+#       echo "!   SFML installed." &&
+#       sudo ldconfig &&
+#       echo "!   SFML libraries linked." )
 fi
 
 
