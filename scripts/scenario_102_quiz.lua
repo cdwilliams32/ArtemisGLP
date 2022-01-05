@@ -87,12 +87,12 @@ function update(delta)
         then
             timer = timer + 1
         end
-        if (timer == 1200)
+        if (timer == 1000)
         then
             print("Poseidon's Spear, dropping out of wrap.")
             poseidon1:sendCommsMessage(player,"Poseidon's Spear, dropping out of wrap.")
         end
-        if (timer == 1600)
+        if (timer == 1300)
         then
             local x,y = player:getPosition()
             x = x - 3500
